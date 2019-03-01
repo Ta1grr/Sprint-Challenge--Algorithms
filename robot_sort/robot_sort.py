@@ -102,41 +102,46 @@ class SortingRobot:
         """
         # Fill this out
         # This is the loop will stop once the inner loop stop turning on the light.
-        # while not self.light_is_on:
-        
-        #   self.set_light_off
-        #   while self.light_is_on and self.can_move_right:
-        #     self.swap_item
-        #     self.move_right
-        #     if self.compare_item == 1:
-        #       self.swap_item
-        #       self.move_left
-        #       self.swap_item
-        #       self.move_right
-        #       self.set_light_on
-        #     else:
-        #       self.move_left
-        #       self.swap_item
-        #       self.move_right
+        while not self.light_is_on():
+            print("While Loop 1")
 
-        # return self
+            # if not self.can_move_right():
+            #     while self.can_move_left():
+            #         print("Moving Left")
+            #         self.move_left()
+            #         if not self.can_move_left():  
+            #             continue
 
-        while self.light_is_on is True:
+            #set the light on
+            self.set_light_on()
+            #while the light is on and can move right
+            while self.can_move_right(): # and self.can_move_right(),  self.light_is_on()
+                print("While Loop 2")
+                #grab item
+                self.swap_item()
+                self.move_right()
+                # if held_item is greater than position item
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    self.set_light_off()
+                    print("swapping")
+                # else go back, swap item, and move forward one step
+                else:
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    print("not swapping")
 
-          self.set_light_off
-          while self.light_is_on is True and self.can_move_right is True:
-            self.swap_item
-            self.move_right
-            if self.compare_item == 1:
-              self.swap_item
-              self.move_left
-              self.swap_item
-              self.move_right
-              self.set_light_on
-            else:
-              self.move_left
-              self.swap_item
-              self.move_right
+            # if it is at the end of the list, it'll loop until it can't move left
+            if not self.can_move_right():
+                while self.can_move_left():
+                    print("Moving Left")
+                    self.move_left()
+                    if not self.can_move_left():  
+                        break
 
         return self
 
