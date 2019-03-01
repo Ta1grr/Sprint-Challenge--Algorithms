@@ -101,11 +101,30 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-                # This is the loop will stop once the inner loop stop turning on the light.
-        while not self.light_is_on:
-          
+        # This is the loop will stop once the inner loop stop turning on the light.
+        # while not self.light_is_on:
+        
+        #   self.set_light_off
+        #   while self.light_is_on and self.can_move_right:
+        #     self.swap_item
+        #     self.move_right
+        #     if self.compare_item == 1:
+        #       self.swap_item
+        #       self.move_left
+        #       self.swap_item
+        #       self.move_right
+        #       self.set_light_on
+        #     else:
+        #       self.move_left
+        #       self.swap_item
+        #       self.move_right
+
+        # return self
+
+        while self.light_is_on is True:
+
           self.set_light_off
-          while self.light_is_on and self.can_move_right:
+          while self.light_is_on is True and self.can_move_right is True:
             self.swap_item
             self.move_right
             if self.compare_item == 1:
@@ -119,19 +138,27 @@ class SortingRobot:
               self.swap_item
               self.move_right
 
+        return self
+
 # -- Notes --
 #Robot will continuously swap until there is nothing left to swap
 #It'll use the light as a indicator if everything is swap or not
 #So we'll set the light to be false for the first while loop
-#Second While loop, 
+#Second loop, while light is on it'll keep iterating until the pair is in order
+#Inside the second loop, the robot will use the swap procedure
 
 # -- Swap Procedure --
-#Robot is holding "none" swap item at position
+#Robot is holding "none" and swap item at position
 #Move Right
-#Compare Items if it is greater
+#Compare Items if it is greater then
 #Swap Item
 #Move Left
 #Swap Item
+#Move Right
+#If it is equal or smaller then
+#Move left
+#Swap item
+#Move right
 
 # -- Pseudocode from wikipedia --
 # procedure bubbleSort(A : list of sortable items )
