@@ -101,7 +101,85 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        # This is the loop will stop once the inner loop stop turning on the light.
+        while not self.light_is_on():
+            print("While Loop 1")
+
+            # if not self.can_move_right():
+            #     while self.can_move_left():
+            #         print("Moving Left")
+            #         self.move_left()
+            #         if not self.can_move_left():  
+            #             continue
+
+            #set the light on
+            self.set_light_on()
+            #while the light is on and can move right
+            while self.can_move_right(): # and self.can_move_right(),  self.light_is_on()
+                print("While Loop 2")
+                #grab item
+                self.swap_item()
+                self.move_right()
+                # if held_item is greater than position item
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    self.set_light_off()
+                    print("swapping")
+                # else go back, swap item, and move forward one step
+                else:
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    print("not swapping")
+
+            # if it is at the end of the list, it'll loop until it can't move left
+            if not self.can_move_right():
+                while self.can_move_left():
+                    print("Moving Left")
+                    self.move_left()
+                    if not self.can_move_left():  
+                        break
+
+        return self
+
+# -- Notes --
+#Robot will continuously swap until there is nothing left to swap
+#It'll use the light as a indicator if everything is swap or not
+#So we'll set the light to be false for the first while loop
+#Second loop, while light is on it'll keep iterating until the pair is in order
+#Inside the second loop, the robot will use the swap procedure
+
+# -- Swap Procedure --
+#Robot is holding "none" and swap item at position
+#Move Right
+#Compare Items if it is greater then
+#Swap Item
+#Move Left
+#Swap Item
+#Move Right
+#If it is equal or smaller then
+#Move left
+#Swap item
+#Move right
+
+# -- Pseudocode from wikipedia --
+# procedure bubbleSort(A : list of sortable items )
+#     n = length(A)
+#     repeat
+#         swapped = false
+#         for i = 1 to n-1 inclusive do
+#             /* if this pair is out of order */
+#             if A[i-1] > A[i] then
+#                 /* swap them and remember something changed */
+#                 swap( A[i-1], A[i] )
+#                 swapped = true
+#             end if
+#         end for
+#     until not swapped
+# end procedure
 
 
 if __name__ == "__main__":
